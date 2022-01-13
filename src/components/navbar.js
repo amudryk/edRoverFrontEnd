@@ -9,8 +9,8 @@ export default function Navbar({selected}) {
             </div>
             <div class="flex items-center">
                 <NavItem selected={selected==0} value={'Home'} path={'/'}/>
-                <NavItem selected={selected==1} value={'Explore'} path={'/explore'}/>
-                <NavItem selected={selected==2} value={'Match'} path={'/match'}/>
+                {/* <NavItem selected={selected==1} value={'Explore'} path={'/explore'}/>
+                <NavItem selected={selected==2} value={'Match'} path={'/match'}/> */}
                 <NavItem selected={selected==3} value={'Search'} path={'/search'}/>
             </div>
         </div>

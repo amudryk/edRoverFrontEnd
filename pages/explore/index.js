@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Navbar from '../navbar'
-import { getSchools } from '../../utils/schools'
+import Navbar from '../../src/components/navbar'
+import { getSchools } from '../../src/utils/schools'
 import { useEffect, useState } from 'react'
 
 export default function Explore() {
