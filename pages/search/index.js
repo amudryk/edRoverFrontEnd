@@ -11,9 +11,9 @@ export default function Search() {
     </Head>
     <Navbar selected={3}/>
 
-    <div>
+    {/*<div>
       <ExpandedCard/>
-    </div>
+    </div>*/}
     
     <footer>
     </footer>
