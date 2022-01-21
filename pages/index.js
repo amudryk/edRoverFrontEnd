@@ -1,11 +1,10 @@
 import Head from 'next/head'
 import Navbar from '../src/components/navbar'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container} class="min-h-screen min-w-screen overflow-hidden ">
+    <div class="min-h-screen min-w-screen overflow-hidden ">
       <Head>
         <title>EdRover</title>
         <link rel="icon" href="/favicon.ico" />
