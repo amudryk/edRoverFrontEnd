@@ -28,6 +28,11 @@ export default function Search() {
     setProgramCardOpen(true)
   }
 
+  const closeExpandedCard =( ) => {
+    setActiveProgram(null)
+    setProgramCardOpen(false)
+  }
+
   return (
     <div className="min-h-screen min-w-screen overflow-hidden ">
       <Head>
@@ -50,7 +55,7 @@ export default function Search() {
           </form>
         </div>
         <div>
-          <ExpandedCard open={programCardOpen} program={activeProgram}/>
+          <ExpandedCard open={programCardOpen} program={activeProgram} onClose={closeExpandedCard}/>
         </div>
         {!programCardOpen && <div className="w-full mx-auto mb-10 items-center flex flex-wrap justify-center gap-14">
           {
@@ -58,6 +63,7 @@ export default function Search() {
               const {programName, schoolName, bulletPoints, descPreview, thumbnailUrl } = detail
               return (<Card 
                 key={index}
+                id={index}
                 programName={programName}
                 schoolName={schoolName}
                 bulletPoints={bulletPoints}
