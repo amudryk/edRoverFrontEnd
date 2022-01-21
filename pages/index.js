@@ -12,11 +12,11 @@ export default function Home() {
       </Head>
       <Navbar selected={0}/>
     
-      <div className="bg-gradient-to-b from-blue-700 to-purple-800 text-center mt-20 pt-20 -z-1">
-        <header className="font-header text-white text-3xl mx-5">
+      <div className="min-h-screen bg-gradient-to-b from-blue-700 to-purple-800 text-center pt-20">
+        <header className="font-header text-white text-3xl mx-5 mt-20">
           Discover the perfect higher education plan for you.
         </header>
-        <Image src="/home_image.png" width="1052" height="646"/>
+        <Image src="/home_image_old.png" width="1052" height="646"/>
       </div>
 
       <footer>
