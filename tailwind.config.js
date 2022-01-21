@@ -25,6 +25,14 @@ module.exports = {
         bottom: '0 2px 2px -2px rgba(0, 0, 0, 1)',
         ...defaultTheme.boxShadow,
       },
+      minWidth: {
+        '1/4': '25%',
+        '1/5': '20%',
+      },
+      maxWidth: {
+        '1/4': '25%',
+        '1/5': '20%',
+      },
     },
   },
   variants: {
