@@ -15,7 +15,7 @@ export default function Home() {
         <header className="font-header text-white text-3xl mx-5 mt-14">
           Discover the perfect higher education plan for you.
         </header>
-        <Image src="/home_image.jpg" width="1052" height="646"/>
+        <Image className="bottom-0 fixed" src="/home_image.png" width="1052" height="646"/>
       </div>
 
       <footer>
