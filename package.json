@@ -13,6 +13,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
+    "@googlemaps/react-wrapper": "^1.1.23",
+    "@react-google-maps/api": "^2.7.0",
     "chart.js": "^3.7.0",
     "firebase": "^9.0.1",
     "next": "11.1.2",

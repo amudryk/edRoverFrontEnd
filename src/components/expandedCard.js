@@ -1,15 +1,50 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
-import { useEffect, useState } from 'react'
+import { useState, useCallback } from 'react'
 
 export default function ExpandedCard({open, program, onClose}) {
 
   const [addedBookmark, setAddedBookmark] = useState(false)
+  const [map, setMap] = useState(null);
 
   const addBookmark = () => {
     setAddedBookmark(!addedBookmark)
   }
+  
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "AIzaSyBQGTNOnMfl1Gk-4D8VWaB2-H5yuFFMM44"
+  })
+
+  const onLoad = useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds();
+    map.fitBounds(bounds);
+    setMap(map)
+  }, [])
+
+  const onUnmount = useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+
+  
+  const mockReview = [
+    {
+      label: "Liked",
+      percent: 0.8,
+    },
+    {
+      label: "Useful",
+      percent: 1.0,
+    },
+    {
+      label: "Easy",
+      percent: 0.4,
+    },
+  ]
 
   const header = () => (
     <div className="flex flex-col w-1/2">
@@ -86,6 +121,34 @@ export default function ExpandedCard({open, program, onClose}) {
     </div>)
   }
 
+  const review = (text, ratings) => (
+    <div className="shadow-xl mt-8 w-5/6 mx-auto rounded-xl bg-white border-t-[18px] border-lime-200 p-4">
+      <div className="flex items-center">
+        <div className="w-16 h-14 rounded-full bg-gray-100"></div>
+        <div className="ml-4">{text}</div>
+        <div>
+          {ratings.map(({label, percent}) => ratingDotBar(label, percent))}
+          {/* {ratingDotBar("Liked", 0.8)}
+          {ratingDotBar("Useful", 1.0)}
+          {ratingDotBar("Easy", 0.4)} */}
+        </div>
+      </div>
+    </div>
+  )
+
+  const ratingDotBar = (label, level) => {
+    const numDots = 5
+    return (<div className="flex items-center">
+    <div className="flex ml-6 mr-2">
+      {[...Array(level * numDots).keys()].map(_ => <div className="mr-1 w-4 h-4 bg-violet-700 rounded-full"></div>)}
+      {[...Array(5 - level * numDots).keys()].map(_ => <div className="mr-1 w-4 h-4 bg-gray-300 rounded-full"></div>)}
+    </div>
+    <div className="ml-2">
+      {label}
+    </div>
+  </div>)
+  }
+
   return (
       <>
         {open && <div className={"flex-col rounded-lg py-8 mt-40 mx-28  mb-8 bg-white shadow text-left"}>
@@ -98,18 +161,48 @@ export default function ExpandedCard({open, program, onClose}) {
               </div>
               {desc()}
             </section>
-            <section>
+            <section className="mb-10">
               <div className='h-1 w-full bg-violet-700'/>
               <div className="text-xl font-medium mt-10 ml-8 mb-8">
                 Program Reviews
               </div>
               <div>
                 {ratingBars()}
-                <div>
-                  
-                </div>
+                {review(
+                  "This program is comprehensive and gave me the skills to get the jobs of my dreams post graduation",
+                  mockReview
+                  )}
+                  {review(
+                  "This program is comprehensive and gave me the skills to get the jobs of my dreams post graduation",
+                  mockReview
+                  )}
+                  {review(
+                  "This program is comprehensive and gave me the skills to get the jobs of my dreams post graduation",
+                  mockReview
+                  )}
               </div>
-            </section>   
+            </section>
+            <section>
+              <div className='h-1 w-full bg-violet-700'/>
+              <div className="text-xl font-medium mt-10 ml-8 mb-8">
+                Location
+              </div>
+              <div className="ml-8">
+                <div className="font-bold">Oshawa Campus</div>
+                <div className="w-56">2000 Simcoe Street North Oshawa, Ontario L1G 0C5</div>
+                <GoogleMap
+                  mapContainerStyle={{
+                    width: '50%',
+                    height: '400px',
+                    margin: '15px auto'
+                  }}
+                  center={{lat: 43.471921, lng: -80.524585}}
+                  zoom={16}
+                  onLoad={onLoad}
+                  onUnmount={onUnmount}
+                ></GoogleMap>
+              </div>
+            </section> 
         </div>}
       </>
   )

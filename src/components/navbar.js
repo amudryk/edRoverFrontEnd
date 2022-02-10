@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Navbar({selected}) {
 
     return (
-        <div className="max-w-full flex justify-between container fixed shadow-bottom bg-white h-20">
+        <div className="max-w-full flex justify-between container fixed shadow-bottom bg-white h-20 z-20">
             <div className="ml-10">
                 <Logo/>
             </div>

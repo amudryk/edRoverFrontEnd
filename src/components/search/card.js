@@ -4,7 +4,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 export default function Card({programName, schoolName, bulletPoints, descPreview, thumbnailUrl, handleLearnMore, id}) {
 
   return (
-      <div className={"min-w-1/4 w-1/4 max-w-1/4 bg-white rounded-xl text-sm flex flex-col"}>
+      <div className={"min-w-1/4 w-1/4 max-w-1/4 bg-white rounded-xl text-sm flex flex-col cursor-pointer"} onClick={() => handleLearnMore(id)}>
         <div className="bg-green-100 w-full h-12 rounded-t-xl mb-3"/>
         <div className="w-full h-20" style={{
             backgroundImage: `url(${thumbnailUrl})`,
